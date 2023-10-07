@@ -12,7 +12,7 @@ import "fmt"
 // The game will be played until there is a winner or a draw
 
 type Game struct {
-	Board        [3][3]string
+	Board         [3][3]string
 	CurrentPlayer string
 }
 
@@ -30,7 +30,6 @@ func NewGame() *Game {
 func main() {
 	currentGame := NewGame()
 
-
 	fmt.Println("Welcome to Tic Tac Toe!")
 	fmt.Println("-----------------------")
 
@@ -45,7 +44,6 @@ func main() {
 	}
 	PrintBoard(currentGame)
 }
-
 
 func GetMove(game *Game) {
 	var row, col int
@@ -80,29 +78,30 @@ func PrintBoard(game *Game) {
 	}
 }
 
-func CheckWinner(game *Game) (bool) {
-	if(game.Board[0][0]==game.Board[0][1] && game.Board[0][1]==game.Board[0][2] && game.Board[0][0]!=" "){
+func CheckWinner(game *Game) bool {
+
+	if game.Board[0][0] == game.Board[0][1] && game.Board[0][1] == game.Board[0][2] && game.Board[0][0] != " " {
 		return true
 	}
-	if(game.Board[1][0]==game.Board[1][1] && game.Board[1][1]==game.Board[1][2] && game.Board[1][0]!=" "){
+	if game.Board[1][0] == game.Board[1][1] && game.Board[1][1] == game.Board[1][2] && game.Board[1][0] != " " {
 		return true
 	}
-	if(game.Board[2][0]==game.Board[2][1] && game.Board[2][1]==game.Board[2][2] && game.Board[2][0]!=" "){
+	if game.Board[2][0] == game.Board[2][1] && game.Board[2][1] == game.Board[2][2] && game.Board[2][0] != " " {
 		return true
 	}
-	if(game.Board[0][0]==game.Board[1][0] && game.Board[1][0]==game.Board[2][0] && game.Board[0][0]!=" "){
+	if game.Board[0][0] == game.Board[1][0] && game.Board[1][0] == game.Board[2][0] && game.Board[0][0] != " " {
 		return true
 	}
-	if(game.Board[1][0]==game.Board[1][1] && game.Board[1][1]==game.Board[1][2] && game.Board[1][0]!=" "){
+	if game.Board[0][1] == game.Board[1][1] && game.Board[1][1] == game.Board[2][1] && game.Board[0][1] != " " {
 		return true
 	}
-	if(game.Board[2][0]==game.Board[2][1] && game.Board[2][1]==game.Board[2][2] && game.Board[2][0]!=" "){
+	if game.Board[0][2] == game.Board[1][2] && game.Board[1][2] == game.Board[2][2] && game.Board[0][2] != " " {
 		return true
 	}
-	if(game.Board[0][0]==game.Board[1][1] && game.Board[1][1]==game.Board[2][2] && game.Board[0][0]!=" "){
+	if game.Board[0][0] == game.Board[1][1] && game.Board[1][1] == game.Board[2][2] && game.Board[0][0] != " " {
 		return true
 	}
-	if(game.Board[0][2]==game.Board[1][1] && game.Board[1][1]==game.Board[2][0] && game.Board[0][2]!=" "){
+	if game.Board[0][2] == game.Board[1][1] && game.Board[1][1] == game.Board[2][0] && game.Board[0][2] != " " {
 		return true
 	}
 
