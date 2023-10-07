@@ -1,3 +1,3 @@
-module exercise-1
+module programming-go-lang
 
 go 1.21.1
