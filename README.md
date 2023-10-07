@@ -1,2 +1,3 @@
-# programming-go-lang
+# Programming exercises in Go
+
 Learning Go exercises
