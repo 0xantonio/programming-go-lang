@@ -14,6 +14,7 @@ import "fmt"
 type Game struct {
 	Board        [3][3]string
 	CurrentPlayer string
+	IsOver       bool
 }
 
 func NewGame() *Game {
@@ -28,14 +29,22 @@ func NewGame() *Game {
 }
 
 func main() {
-	game := NewGame()
+	currentGame := NewGame()
+
+
+	fmt.Println("Welcome to Tic Tac Toe!")
+	fmt.Println("-----------------------")
 
 	for i := 0; i < 9; i++ {
-		GetMove(game)
+		GetMove(currentGame)
 
-		SwitchPlayer(game)
+		if CheckWinner(currentGame) {
+			fmt.Println("Winner is", currentGame.CurrentPlayer)
+			break
+		}
+		SwitchPlayer(currentGame)
 	}
-	PrintBoard(game)
+	PrintBoard(currentGame)
 }
 
 
@@ -70,4 +79,52 @@ func PrintBoard(game *Game) {
 		}
 		fmt.Println("|")
 	}
+}
+
+func CheckWinner(game *Game) (bool) {
+	// Check rows
+	// 0, 0 | 1, 0 | 2, 0
+	// 0, 1 | 1, 1 | 2, 1
+	// 0, 2 | 1, 2 | 2, 2
+
+	if(game.Board[0][0]==game.Board[0][1] && game.Board[0][1]==game.Board[0][2] && game.Board[0][0]!=" "){
+		return true
+	}
+	if(game.Board[1][0]==game.Board[1][1] && game.Board[1][1]==game.Board[1][2] && game.Board[1][0]!=" "){
+		return true
+	}
+	if(game.Board[2][0]==game.Board[2][1] && game.Board[2][1]==game.Board[2][2] && game.Board[2][0]!=" "){
+
+		return true
+	}
+
+
+	// Check columns
+	// 0, 0 | 0, 1 | 0, 2
+	// 1, 0 | 1, 1 | 1, 2
+	// 2, 0 | 2, 1 | 2, 2
+
+	if(game.Board[0][0]==game.Board[1][0] && game.Board[1][0]==game.Board[2][0] && game.Board[0][0]!=" "){
+		return true
+	}
+	if(game.Board[1][0]==game.Board[1][1] && game.Board[1][1]==game.Board[1][2] && game.Board[1][0]!=" "){
+		return true
+	}
+	if(game.Board[2][0]==game.Board[2][1] && game.Board[2][1]==game.Board[2][2] && game.Board[2][0]!=" "){
+		return true
+	}
+
+	// Check diagonals
+	//  0, 0 | 1, 1 | 2, 2
+	//  0, 2 | 1, 1 | 2, 0
+
+	if(game.Board[0][0]==game.Board[1][1] && game.Board[1][1]==game.Board[2][2] && game.Board[0][0]!=" "){
+		return true
+	}
+	if(game.Board[0][2]==game.Board[1][1] && game.Board[1][1]==game.Board[2][0] && game.Board[0][2]!=" "){
+		return true
+	}
+
+	return false
+
 }
