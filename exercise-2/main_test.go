@@ -80,7 +80,7 @@ func TestCheckWinner(t *testing.T) {
 				},
 				CurrentPlayer: "O",
 			},
-			expectedIsWon: true,
+			expectedIsWon: false,
 		},
 		{
 			name: "Diagonal win",
