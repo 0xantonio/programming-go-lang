@@ -14,7 +14,6 @@ import "fmt"
 type Game struct {
 	Board        [3][3]string
 	CurrentPlayer string
-	IsOver       bool
 }
 
 func NewGame() *Game {
@@ -82,11 +81,6 @@ func PrintBoard(game *Game) {
 }
 
 func CheckWinner(game *Game) (bool) {
-	// Check rows
-	// 0, 0 | 1, 0 | 2, 0
-	// 0, 1 | 1, 1 | 2, 1
-	// 0, 2 | 1, 2 | 2, 2
-
 	if(game.Board[0][0]==game.Board[0][1] && game.Board[0][1]==game.Board[0][2] && game.Board[0][0]!=" "){
 		return true
 	}
@@ -94,16 +88,8 @@ func CheckWinner(game *Game) (bool) {
 		return true
 	}
 	if(game.Board[2][0]==game.Board[2][1] && game.Board[2][1]==game.Board[2][2] && game.Board[2][0]!=" "){
-
 		return true
 	}
-
-
-	// Check columns
-	// 0, 0 | 0, 1 | 0, 2
-	// 1, 0 | 1, 1 | 1, 2
-	// 2, 0 | 2, 1 | 2, 2
-
 	if(game.Board[0][0]==game.Board[1][0] && game.Board[1][0]==game.Board[2][0] && game.Board[0][0]!=" "){
 		return true
 	}
@@ -113,11 +99,6 @@ func CheckWinner(game *Game) (bool) {
 	if(game.Board[2][0]==game.Board[2][1] && game.Board[2][1]==game.Board[2][2] && game.Board[2][0]!=" "){
 		return true
 	}
-
-	// Check diagonals
-	//  0, 0 | 1, 1 | 2, 2
-	//  0, 2 | 1, 1 | 2, 0
-
 	if(game.Board[0][0]==game.Board[1][1] && game.Board[1][1]==game.Board[2][2] && game.Board[0][0]!=" "){
 		return true
 	}
