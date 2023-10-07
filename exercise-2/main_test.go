@@ -23,6 +23,66 @@ func TestCheckWinner(t *testing.T) {
 			expectedIsWon: true,
 		},
 		{
+			name: "O Row win",
+			game: &Game{
+				Board: [3][3]string{
+					{" ", " ", " "},
+					{"O", "O", "O"},
+					{" ", " ", " "},
+				},
+				CurrentPlayer: "O",
+			},
+			expectedIsWon: true,
+		},
+		{
+			name: "Last row win when current player is O",
+			game: &Game{
+				Board: [3][3]string{
+					{" ", " ", " "},
+					{" ", " ", " "},
+					{"O", "O", "O"},
+				},
+				CurrentPlayer: "O",
+			},
+			expectedIsWon: true,
+		},
+		{
+			name: "Column win",
+			game: &Game{
+				Board: [3][3]string{
+					{" ", "X", " "},
+					{" ", "X", " "},
+					{" ", "X", " "},
+				},
+				CurrentPlayer: "X",
+			},
+			expectedIsWon: true,
+		},
+		{
+			name: "First column win",
+			game: &Game{
+				Board: [3][3]string{
+					{"O", " ", " "},
+					{"O", " ", " "},
+					{"O", " ", " "},
+				},
+				CurrentPlayer: "O",
+			},
+			expectedIsWon: true,
+		},
+		{
+			name: "Last column win",
+			game: &Game{
+				Board: [3][3]string{
+					{" ", " ", "O"},
+					{" ", " ", "O"},
+					{" ", " ", "O"},
+				},
+				CurrentPlayer: "O",
+			},
+			expectedIsWon: true,
+		},
+		{
 			name: "Diagonal win",
 			game: &Game{
 				Board: [3][3]string{
